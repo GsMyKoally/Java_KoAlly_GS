@@ -27,7 +27,7 @@ public class Pessoa {
     }
 
     //Criando metodos
-    public String exibirDados() {
-        return null;
+    public String exibirDados(){
+        return String.format("Nome: %s\nIdade: %d\nNacionalidade: %s", getNome(),getIdade(),getNacionalidade());
     }
 }
