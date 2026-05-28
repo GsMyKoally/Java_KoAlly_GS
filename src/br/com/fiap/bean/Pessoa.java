@@ -6,6 +6,10 @@ public class Pessoa {
     private int idade;
     private String nacionalidade;
 
+    //Criando construtor
+    public Pessoa(){}
+
+
     //Criando getters e setters
     public String getNome() {
         return nome;
