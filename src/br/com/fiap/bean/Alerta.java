@@ -1,14 +1,19 @@
 package br.com.fiap.bean;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Alerta {
+
+    //  ATRIBUTOS   //
 
     private Tipo_Alerta tipo;
     private String descricao;
     private Gravidade_Alerta nivelGravidade;
-    private LocalDate dataHora;
+    private LocalDateTime dataHora;
     private boolean resolvido = false;
+
+    //  GETTERS/SETTERS //
 
     public String getDescricao() {
         return descricao;
@@ -22,7 +27,7 @@ public class Alerta {
         return tipo;
     }
 
-    public LocalDate getDataHora() {
+    public LocalDateTime getDataHora() {
         return dataHora;
     }
 
@@ -30,14 +35,29 @@ public class Alerta {
         return resolvido;
     }
 
-    public void setResolvido(boolean resolvido) {
-        this.resolvido = resolvido;
-    }
+    //  CONSTRUTOR  //
 
     public Alerta(Tipo_Alerta tipo, String descricao, Gravidade_Alerta gravidade){
         this.tipo = tipo;
         this.descricao = descricao;
         this.nivelGravidade = gravidade;
-        this.dataHora = LocalDate.now();
+        this.dataHora = LocalDateTime.now();
     }
+
+    //  MÉTODOS //
+
+    public void marcarResolvido(boolean status) {
+        this.resolvido = status;
+    }
+    public String exibirAlerta(){
+        return String.format("""
+                Alerta!
+                %s
+                Tipo: %s
+                Gravidade: %s
+                Data de Emissão: %s
+                Situação: %s
+                """,getDescricao(),getTipo(),getNivelGravidade(), getDataHora(), isResolvido()? "Resolvido": "Pendente");
+    }
+
 }
