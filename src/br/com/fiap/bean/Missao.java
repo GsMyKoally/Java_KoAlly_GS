@@ -1,6 +1,12 @@
 package br.com.fiap.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Missao {
+
+    //  ATRIBUTOS   //
+
     private String nomeMissao;
     private String destino;
     private int duracaoPrevistaDias;
@@ -72,15 +78,22 @@ public class Missao {
     }
 
     public String exibirDetalhesMissao(){
-        String tripulacaoTexto = "";
-        this.tripulacao.forEach(tripulante -> tripulacaoTexto.concat(tripulante.getNome()+"\n"));
+        StringBuilder nomesDaTripulacao = new StringBuilder();
+        for (int i = 0; i < this.tripulacao.toArray().length; i++) {
+
+            if( i == this.tripulacao.toArray().length - 1){
+                nomesDaTripulacao.append(this.tripulacao.get(i).getNome()).append(".");
+            }else{
+                nomesDaTripulacao.append(this.tripulacao.get(i).getNome()).append(", ");
+            }
+        }
         return String.format("""
                 Missão: %s
                 Destino: %s
-                Duração Prevista: %n
+                Duração Prevista: %d
                 Status Atual: %s
                 Tripulação:
                 %s
-                """, getNomeMissao(), getDestino(), getDuracaoPrevistaDias(), getStatus(), tripulacaoTexto);
+                """, getNomeMissao(), getDestino(), getDuracaoPrevistaDias(), getStatus(), nomesDaTripulacao);
     }
 }
