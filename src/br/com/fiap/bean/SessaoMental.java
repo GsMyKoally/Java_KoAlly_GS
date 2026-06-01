@@ -14,13 +14,14 @@ public class SessaoMental implements Analisavel{
 
     //Criando construtores
     public SessaoMental(){}
-    public SessaoMental(int idSessao, LocalDateTime data, int nivelHumor, String sentimentoRelatado, String recomendacao, Astronauta astronauta) {
+    public SessaoMental(int idSessao, LocalDateTime data, int nivelHumor, String sentimentoRelatado, String recomendacao, Astronauta astronauta, String estadoMental) {
         this.idSessao = idSessao;
         this.data = data;
         this.nivelHumor = nivelHumor;
         this.sentimentoRelatado = sentimentoRelatado;
         this.recomendacao = recomendacao;
         this.astronauta = astronauta;
+        EstadoMental = estadoMental;
     }
 
     //Criando getters e setters
@@ -64,6 +65,12 @@ public class SessaoMental implements Analisavel{
     }
     public void setAstronauta(Astronauta astronauta) {
         this.astronauta = astronauta;
+    }
+    public String getEstadoMental() {
+        return EstadoMental;
+    }
+    public void setEstadoMental(String estadoMental) {
+        EstadoMental = estadoMental;
     }
 
     //Criando e importando metodos da classe
