@@ -40,8 +40,18 @@ public class KoAlly {
     }
 
     public String analisarEstadoTripulacao(){
+        //TODO Receber os históricos de saúde de todos os astronautas da tripulação e checar as médias de humor baixa e retornar um relatório
         return "";
     }
 
+    public String exibirPainelGeral(){
+
+        //TODO Receber os status de saúde de cada tripulante e formatar
+        return String.format("""
+                Missão: %s
+                Status: %s
+                Tripulante e seu estado de saúde:
+                """, getMissaoAtual().getNomeMissao(), getMissaoAtual().getStatus());
+    }
 
 }
