@@ -10,6 +10,7 @@ public class SessaoMental implements Analisavel{
     private String sentimentoRelatado;
     private String recomendacao;
     private Astronauta astronauta;
+    private String EstadoMental;
 
     //Criando construtores
     public SessaoMental(){}
@@ -71,13 +72,13 @@ public class SessaoMental implements Analisavel{
         this.sentimentoRelatado = sentimento;
         try {
             if (nivelHumor >= 1 && nivelHumor <= 3) {
-                recomendacao = "critico";
+                EstadoMental = "critico";
             }
             else if(nivelHumor >= 4 && nivelHumor <=6){
-                recomendacao = "atencao";
+                EstadoMental = "atencao";
             }
             else if (nivelHumor >= 7 && nivelHumor <= 10){
-                recomendacao = "estavel";
+                EstadoMental = "estavel";
             }
             else {
                 throw new Exception("ERRO: Nível fora dos parâmetros! Coloque de 1-10.");
