@@ -23,6 +23,11 @@ public class KoAlly {
 
     //  MÉTODOS //
 
+    public SessaoMental iniciarSessaoMental(Astronauta astronauta){
+        SessaoMental sess = new SessaoMental();
+        sess.setAstronauta(astronauta);
+        return sess;
+    }
 
 
 
