@@ -21,7 +21,7 @@ public class SessaoMental implements Analisavel{
         this.sentimentoRelatado = sentimentoRelatado;
         this.recomendacao = recomendacao;
         this.astronauta = astronauta;
-        EstadoMental = estadoMental;
+        this.EstadoMental = estadoMental;
     }
 
     //Criando getters e setters
