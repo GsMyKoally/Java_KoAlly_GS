@@ -39,13 +39,34 @@ public class KoAlly {
         return new Alerta(tipo,desc,grav);
     }
 
-    public String analisarEstadoTripulacao(){
-        //TODO Receber os históricos de saúde de todos os astronautas da tripulação e checar as médias de humor baixa e retornar um relatório
-        return "";
+    public String analisarEstadoTripulacao() {
+        String relatorio = "=== ANÁLISE DO ESTADO DA TRIPULAÇÃO ===\n\n";
+        int astronautasEmAtencao = 0;
+
+        for (HistoricoSaude historico : historicos) {
+            double media = historico.calcularMediaHumor();
+            String nome = historico.getAstronauta().getNome();
+
+            relatorio += "Astronauta: " + nome + "\n";
+            relatorio += "Média de humor: " + String.format("%.2f", media) + "\n";
+
+            if (media < 5.0 && historico.getTotalSessoes() > 0) {
+                relatorio += "Status: NECESSITA DE ACOMPANHAMENTO\n";
+                astronautasEmAtencao++;
+            } else if (historico.getTotalSessoes() == 0) {
+                relatorio += "Status: Sem sessões registradas\n";
+            } else {
+                relatorio += "Status: Estável\n";
+            }
+            relatorio += "------------------------\n";
+        }
+
+        relatorio += "\nTotal de astronautas em atenção: " + astronautasEmAtencao;
+
+        return relatorio;
     }
 
     public String exibirPainelGeral(){
-
         //TODO Receber os status de saúde de cada tripulante e formatar
         return String.format("""
                 Missão: %s
