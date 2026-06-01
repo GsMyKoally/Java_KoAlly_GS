@@ -21,6 +21,12 @@ public class KoAlly {
         this.alertasAtivos = alertasAtivos;
     }
 
+    //  GETTERS/SETTERS //
+
+    public Missao getMissaoAtual() {
+        return missaoAtual;
+    }
+
     //  MÉTODOS //
 
     public SessaoMental iniciarSessaoMental(Astronauta astronauta){
