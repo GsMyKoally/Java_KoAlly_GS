@@ -19,26 +19,14 @@ public class Main {
 
         //Parte 1: Cadastro
         try {
-            System.out.println("==== BOAS-VINDAS AO KOALLY ====\nPara prosseguir informe os dados da missão");
-            System.out.println("Nome da missão: ");
-            nomeMissao = scan.nextLine();
-            missao.setNomeMissao(nomeMissao);
-
-            System.out.println("Destino da missão: ");
-            destinoMissao = scan.nextLine();
-            missao.setDestino(destinoMissao);
-
-            System.out.println("Duração prevista da missão: ");
-            duracaoDias = scan.nextInt();
-            missao.setDuracaoPrevistaDias(duracaoDias);
-
-            System.out.println("Imforme a quantidade de astronautas que participarão da missão");
+            System.out.println("==== SISTEMA INICIADO ====");
+            System.out.println("Informe a quantidade de astronautas que participarão da missão");
             qtdAstronauta = scan.nextInt();
             if (qtdAstronauta < 1){
                 System.out.println("ERRO: Quantidade inválida!");
             }
             for (int i = 0; i < qtdAstronauta; i++){
-                System.out.println("==== Cadastro do Astronauta" + (i + 1) + "====");
+                System.out.println("==== Cadastro do Astronauta " + (i + 1) +" ====");
                 System.out.println("Nome: ");
                 nome = scan.next();
 
@@ -61,6 +49,19 @@ public class Main {
                 histor.setSessoes(new ArrayList<>());
                 koally.getHistoricos().add(histor);
             }
+            System.out.println("Para prosseguir informe os dados da missão");
+            System.out.println("Nome da missão: ");
+            nomeMissao = scan.nextLine();
+            missao.setNomeMissao(nomeMissao);
+
+            System.out.println("Destino da missão: ");
+            destinoMissao = scan.nextLine();
+            missao.setDestino(destinoMissao);
+
+            System.out.println("Duração prevista da missão: ");
+            duracaoDias = scan.nextInt();
+            missao.setDuracaoPrevistaDias(duracaoDias);
+
             missao.iniciarMissao();
             koally.setMissaoAtual(missao);
             System.out.println("==== Missão iniciada com êxito! ====");
@@ -72,7 +73,7 @@ public class Main {
 
         //Partes 2: Menu principal
         while(escolha.equalsIgnoreCase("sim")){
-
+            System.out.println("==== BOAS-VINDAS AO KOALLY ====");
 
             System.out.println("Deseja Continuar (Sim|Não)?");
             escolha = scan.next();
