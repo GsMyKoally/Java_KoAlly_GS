@@ -9,11 +9,12 @@ public class Astronauta extends Pessoa{
 
     //Criando Construtores vazio e com parâmetros
     public Astronauta(){}
-    public Astronauta(String codAstronauta, String funcao, int diasEmMissao, double nivelEstresse) {
+    public Astronauta(String nome, int idade, String nacionalidade, String codAstronauta, String funcao) {
+        super.setNome(nome);
+        super.setIdade(idade);
+        super.setNacionalidade(nacionalidade);
         this.codAstronauta = codAstronauta;
         this.funcao = funcao;
-        this.diasEmMissao = diasEmMissao;
-        this.nivelEstresse = nivelEstresse;
     }
 
     //Criando getters e setters
