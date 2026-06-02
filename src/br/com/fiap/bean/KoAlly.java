@@ -11,6 +11,7 @@ public class KoAlly {
     private List<HistoricoSaude> historicos = new ArrayList<>();
     private List<Alerta> alertasAtivos = new ArrayList<>();
 
+
     //  CONSTRUTORES    //
 
     public KoAlly(){}
@@ -67,12 +68,17 @@ public class KoAlly {
     }
 
     public String exibirPainelGeral(){
-        //TODO Receber os status de saúde de cada tripulante e formatar
+        String tripulacao = "";
+        for (int i = 0; i < historicos.size(); i++){
+            tripulacao += "Astronauta:" + historicos.get(i).getAstronauta().getNome() + "\n";
+            tripulacao += historicos.get(i).analisar() + "\n";
+        }
+
         return String.format("""
                 Missão: %s
                 Status: %s
-                Tripulante e seu estado de saúde:
-                """, getMissaoAtual().getNomeMissao(), getMissaoAtual().getStatus());
+                Tripulante e seu estado de saúde: %s
+                """, getMissaoAtual().getNomeMissao(), getMissaoAtual().getStatus(), tripulacao);
     }
 
 }
