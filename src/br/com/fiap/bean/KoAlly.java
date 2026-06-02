@@ -27,6 +27,22 @@ public class KoAlly {
     public Missao getMissaoAtual() {
         return missaoAtual;
     }
+    public void setMissaoAtual(Missao missaoAtual) {
+        this.missaoAtual = missaoAtual;
+    }
+    public List<HistoricoSaude> getHistoricos() {
+        return historicos;
+    }
+    public void setHistoricos(List<HistoricoSaude> historicos) {
+        this.historicos = historicos;
+    }
+    public List<Alerta> getAlertasAtivos() {
+        return alertasAtivos;
+    }
+    public void setAlertasAtivos(List<Alerta> alertasAtivos) {
+        this.alertasAtivos = alertasAtivos;
+    }
+
 
     //  MÉTODOS //
 
