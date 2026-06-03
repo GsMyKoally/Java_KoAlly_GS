@@ -98,13 +98,13 @@ public class SessaoMental implements Analisavel{
     public String gerarRecomendacao(){
         try {
             if (nivelHumor >= 1 && nivelHumor <= 3){
-                return recomendacao = "Contato imediato com a Terra e exercício de respiração guiada.";
+                return recomendacao = "Recomendação: Contato imediato com a Terra e exercício de respiração guiada.";
             }
             else if(nivelHumor >= 4 && nivelHumor <=6){
-                return recomendacao = "Pausa de 30 minutos e sessão de relaxamento.";
+                return recomendacao = "Recomendação: Pausa de 30 minutos e sessão de relaxamento.";
             }
             else if (nivelHumor >= 7 && nivelHumor <= 10){
-                return recomendacao = "Continue assim! Atividade recreativa sugerida.";
+                return recomendacao = "Recomendação: Continue assim! Atividade recreativa sugerida.";
             }
             else {
                 throw new Exception("ERRO: Sistema foi incapaz de gerar recomendação!");
