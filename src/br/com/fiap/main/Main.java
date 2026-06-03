@@ -96,8 +96,6 @@ public class Main {
                         System.out.println("Agora, me diga qual sentimento está sentindo");
                         sentimento = scan.nextLine();
                         sm.avaliarHumor(nivelHumor, sentimento);
-                        System.out.println("=== RECOMENDAÇÃO ===\n" + sm.gerarRecomendacao());
-                        System.out.println("-----------------------");
                         System.out.println("=== RESUMO DA SESSÃO ===\n" + sm.exibirResumoSessao());
                         for (int i = 0; i < koally.getHistoricos().size(); i++){
                             if(koally.getHistoricos().get(i).getAstronauta() == missao.getTripulacao().get(escolhaAstronauta)){
@@ -105,6 +103,8 @@ public class Main {
                                 break;
                             }
                         }
+                        System.out.println("-----------------------");
+                        System.out.println("=== RECOMENDAÇÃO ===\n" + sm.gerarRecomendacao());
                         break;
                     case 2:
                         System.out.println("Escolha o tipo de alerta" +
