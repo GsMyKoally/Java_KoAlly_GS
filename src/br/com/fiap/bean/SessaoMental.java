@@ -116,8 +116,8 @@ public class SessaoMental implements Analisavel{
     }
 
     public String exibirResumoSessao(){
-        return String.format("ID.Sessão: %d\nData da sessão: %s\nAstronauta: %s\nNível de humor: %d\nSentimento relatado:\n-%s\nRecomendação: %s",
-                getIdSessao(),getData(),getAstronauta().getNome(),getNivelHumor(),getSentimentoRelatado(),getRecomendacao());
+        return String.format("ID.Sessão: %d\nData da sessão: %s\nAstronauta: %s\nNível de humor: %d\nSentimento relatado:\n-%s",
+                getIdSessao(),getData(),getAstronauta().getNome(),getNivelHumor(),getSentimentoRelatado());
     }
 
     public String analisar(){
