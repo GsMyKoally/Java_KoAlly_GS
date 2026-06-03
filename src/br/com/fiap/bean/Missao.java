@@ -79,9 +79,9 @@ public class Missao {
 
     public String exibirDetalhesMissao(){
         StringBuilder nomesDaTripulacao = new StringBuilder();
-        for (int i = 0; i < this.tripulacao.toArray().length; i++) {
+        for (int i = 0; i < this.tripulacao.size(); i++) {
 
-            if( i == this.tripulacao.toArray().length - 1){
+            if( i == this.tripulacao.size() - 1){
                 nomesDaTripulacao.append(this.tripulacao.get(i).getNome()).append(".");
             }else{
                 nomesDaTripulacao.append(this.tripulacao.get(i).getNome()).append(", ");
