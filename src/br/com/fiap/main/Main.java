@@ -1,9 +1,6 @@
 package br.com.fiap.main;
 
-import br.com.fiap.bean.Astronauta;
-import br.com.fiap.bean.HistoricoSaude;
-import br.com.fiap.bean.KoAlly;
-import br.com.fiap.bean.Missao;
+import br.com.fiap.bean.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +11,8 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         KoAlly koally = new KoAlly();
         Missao missao = new Missao();
-        String escolha = "sim", nomeMissao, destinoMissao, nome, nacionalidade, codAstronauta, funcao, sentimento, sessao, descricao;
-        int opcao, duracaoDias, qtdAstronauta, idade, escolhaAstronauta, nivelHumor, escolhaTipo, escolhaGravidade, escolhaRelatorio, ultimas;
+        String escolha = "sim", nomeMissao, destinoMissao, nome, nacionalidade, codAstronauta, funcao, sentimento, descricao;
+        int opcao, duracaoDias, qtdAstronauta, idade, escolhaAstronauta, nivelHumor, escolhaTipo, escolhaGravidade, escolhaRelatorio, ultimas, sessoes;
 
         //Parte 1: Cadastro
         try {
@@ -32,6 +29,7 @@ public class Main {
 
                 System.out.println("Idade: ");
                 idade = scan.nextInt();
+                scan.nextLine();
 
                 System.out.println("Nacionalidade: ");
                 nacionalidade = scan.next();
@@ -51,11 +49,11 @@ public class Main {
             }
             System.out.println("Para prosseguir informe os dados da missão");
             System.out.println("Nome da missão: ");
-            nomeMissao = scan.nextLine();
+            nomeMissao = scan.next();
             missao.setNomeMissao(nomeMissao);
 
             System.out.println("Destino da missão: ");
-            destinoMissao = scan.nextLine();
+            destinoMissao = scan.next();
             missao.setDestino(destinoMissao);
 
             System.out.println("Duração prevista da missão: ");
@@ -68,17 +66,142 @@ public class Main {
             System.out.println(missao.exibirDetalhesMissao());
 
         } catch (Exception e) {
-            System.out.println("ERRO: Informação inserida está inválida!");;
+            System.out.println("ERRO: Informação inserida está inválida!");
         }
 
         //Partes 2: Menu principal
         while(escolha.equalsIgnoreCase("sim")){
-            System.out.println("==== BOAS-VINDAS AO KOALLY ====");
+            try {
+                System.out.println("==== BOAS-VINDAS AO KOALLY ====");
+                System.out.println("1.Realizar sessão de saúde mental" +
+                        "\n2.Emitir alerta" +
+                        "\n3.Painel geral da tripulação" +
+                        "\n4.Analisar estado da tripulação" +
+                        "\n5.Acessar histórico de um astronauta");
+                opcao = scan.nextInt();
+                switch (opcao) {
+                    case 1:
+                        System.out.println("Digite o número do astronauta que deseja iniciar a sessão");
+                        for (int i = 0; i < missao.getTripulacao().size(); i++){
+                            System.out.println((i + 1) + "-" + missao.getTripulacao().get(i).getNome());
+                        }
+                        System.out.println("Insira: ");
+                        escolhaAstronauta = scan.nextInt() - 1;
+                        SessaoMental sm = koally.iniciarSessaoMental(missao.getTripulacao().get(escolhaAstronauta));
 
-            System.out.println("Deseja Continuar (Sim|Não)?");
+                        System.out.println("Bem vindo!\nMe diga como está seu humor no presente momento em um nível de 1-10");
+                        nivelHumor = scan.nextInt();
+                        scan.nextLine();
+
+                        System.out.println("Agora, me diga qual sentimento está sentindo");
+                        sentimento = scan.nextLine();
+                        sm.avaliarHumor(nivelHumor, sentimento);
+                        System.out.println("=== RECOMENDAÇÃO ===\n" + sm.gerarRecomendacao());
+                        System.out.println("-----------------------");
+                        System.out.println("=== RESUMO DA SESSÃO ===\n" + sm.exibirResumoSessao());
+                        for (int i = 0; i < koally.getHistoricos().size(); i++){
+                            if(koally.getHistoricos().get(i).getAstronauta() == missao.getTripulacao().get(escolhaAstronauta)){
+                                koally.getHistoricos().get(i).adicionarSessao(sm);
+                                break;
+                            }
+                        }
+                        break;
+                    case 2:
+                        System.out.println("Escolha o tipo de alerta" +
+                                "\n1.Saúde_mental" +
+                                "\n2.Técnico" +
+                                "\n3.Emergência" +
+                                "\nInsira: ");
+                        escolhaTipo = scan.nextInt();
+                        Tipo_Alerta tipo = null;
+                        switch (escolhaTipo){
+                            case 1:
+                                tipo = Tipo_Alerta.SAUDE_MENTAL;
+                                break;
+                            case 2:
+                                tipo = Tipo_Alerta.TECNICO;
+                                break;
+                            case 3:
+                                tipo = Tipo_Alerta.EMERGENCIA;
+                                break;
+                            default:
+                                System.out.println("ERRO: Opção inválida");
+                                break;
+                        }
+                        scan.nextLine();
+                        System.out.println("Transcreva a descrição do alerta");
+                        descricao = scan.nextLine();
+
+                        System.out.println("Informe o nível da gravidade do problema" +
+                                "\n1.Baixo" +
+                                "\n2.Médio" +
+                                "\n3.Crítico" +
+                                "\nInsira: ");
+                        escolhaGravidade = scan.nextInt();
+                        Gravidade_Alerta gravidade = null;
+                        switch (escolhaGravidade){
+                            case 1:
+                                gravidade = Gravidade_Alerta.BAIXO;
+                                break;
+                            case 2:
+                                gravidade = Gravidade_Alerta.MEDIO;
+                                break;
+                            case 3:
+                                gravidade = Gravidade_Alerta.CRITICO;
+                                break;
+                            default:
+                                System.out.println("ERRO: Opção inválida");
+                                break;
+                        }
+                        if (tipo != null && gravidade != null) {
+                            Alerta alerta = koally.emitirAlerta(tipo, descricao, gravidade);
+                            System.out.println(alerta.exibirAlerta());
+                        }
+                        break;
+                    case 3:
+                        System.out.println(koally.exibirPainelGeral());
+                        break;
+                    case 4:
+                        System.out.println(koally.analisarEstadoTripulacao());
+                        break;
+                    case 5:
+                        System.out.println("Digite o número do astronauta que deseja ver o histórico");
+                        for (int i = 0; i < missao.getTripulacao().size(); i++){
+                            System.out.println((i + 1) + "-" + missao.getTripulacao().get(i).getNome());
+                        }
+                        escolhaRelatorio = scan.nextInt() - 1;
+                        HistoricoSaude hs = null;
+                        for (int i = 0; i < koally.getHistoricos().size(); i++) {
+                            if (koally.getHistoricos().get(i).getAstronauta() == missao.getTripulacao().get(escolhaRelatorio)) {
+                                hs = koally.getHistoricos().get(i);
+                            }
+                        }
+                        System.out.println("Qual das visualizações que ver" +
+                                "\n1.Relatório completo" +
+                                "\n2.Últimas N sessões" +
+                                "\nInsira: ");
+                        sessoes = scan.nextInt();
+                        if (sessoes == 1) {
+                            assert hs != null;
+                            System.out.println(hs.exibirRelatorioCompleto());
+                        } else if (sessoes == 2) {
+                            System.out.println("Quais da ultimas sessões deseja ver?");
+                            ultimas = scan.nextInt();
+                            assert hs != null;
+                            System.out.println(hs.exibirRelatorioCompleto(ultimas));
+                        }
+
+                    default:
+                        throw new Exception("ERRO: Opção inválida");
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            System.out.println("Deseja continuar (Sim|Não)?");
             escolha = scan.next();
         }
-        System.out.println("==== SISTEMA FINALIZADO ====\n==== VOLTE SEMPRE ====");
+        System.out.println("Encerrando sistema KoAlly... Até a próxima, astronauta" +
+                "\n==== SISTEMA FINALIZADO ====");
 
     }
 }
