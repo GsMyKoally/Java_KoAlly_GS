@@ -19,26 +19,28 @@ public class Main {
             System.out.println("==== SISTEMA INICIADO ====");
             System.out.println("Informe a quantidade de astronautas que participarão da missão");
             qtdAstronauta = scan.nextInt();
+            scan.nextLine();
             if (qtdAstronauta < 1){
                 System.out.println("ERRO: Quantidade inválida!");
             }
             for (int i = 0; i < qtdAstronauta; i++){
-                System.out.println("==== Cadastro do Astronauta " + (i + 1) +" ====");
+                System.out.println("==== Cadastro do Astronauta " + (i + 1) + " ====");
+
                 System.out.println("Nome: ");
-                nome = scan.next();
+                nome = scan.nextLine();
 
                 System.out.println("Idade: ");
                 idade = scan.nextInt();
                 scan.nextLine();
 
                 System.out.println("Nacionalidade: ");
-                nacionalidade = scan.next();
+                nacionalidade = scan.nextLine();
 
                 System.out.println("CodAstronauta: ");
-                codAstronauta = scan.next();
+                codAstronauta = scan.nextLine();
 
                 System.out.println("Função na nave:");
-                funcao = scan.next();
+                funcao = scan.nextLine();
                 Astronauta astro = new Astronauta(nome, idade, nacionalidade, codAstronauta, funcao);
                 missao.adicionarTripulante(astro);
 
@@ -49,11 +51,11 @@ public class Main {
             }
             System.out.println("Para prosseguir informe os dados da missão");
             System.out.println("Nome da missão: ");
-            nomeMissao = scan.next();
+            nomeMissao = scan.nextLine();
             missao.setNomeMissao(nomeMissao);
 
             System.out.println("Destino da missão: ");
-            destinoMissao = scan.next();
+            destinoMissao = scan.nextLine();
             missao.setDestino(destinoMissao);
 
             System.out.println("Duração prevista da missão: ");
@@ -67,6 +69,7 @@ public class Main {
 
         } catch (Exception e) {
             System.out.println("ERRO: Informação inserida está inválida!");
+            return;
         }
 
         //Partes 2: Menu principal
@@ -182,20 +185,28 @@ public class Main {
                                 "\nInsira: ");
                         sessoes = scan.nextInt();
                         if (sessoes == 1) {
-                            assert hs != null;
-                            System.out.println(hs.exibirRelatorioCompleto());
+                            if (hs != null) {
+                                System.out.println(hs.exibirRelatorioCompleto() + "\n");
+                            } else {
+                                System.out.println("Histórico não encontrado");
+                            }
                         } else if (sessoes == 2) {
                             System.out.println("Quais da ultimas sessões deseja ver?");
                             ultimas = scan.nextInt();
-                            assert hs != null;
-                            System.out.println(hs.exibirRelatorioCompleto(ultimas));
+                            if (hs != null) {
+                                System.out.println(hs.exibirRelatorioCompleto(ultimas));
+                            } else {
+                                System.out.println("Histórico não encontrado");
+                            }
                         }
-
+                        break;
                     default:
-                        throw new Exception("ERRO: Opção inválida");
+                        System.out.println("ERRO: opção inválida");
+                        break;
                 }
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                scan.nextLine();
+                System.out.println("ERRO: Opção inserida é inválida!");
             }
             System.out.println("Deseja continuar (Sim|Não)?");
             escolha = scan.next();
