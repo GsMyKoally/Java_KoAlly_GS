@@ -2,6 +2,7 @@ package br.com.fiap.bean;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Alerta {
 
@@ -12,6 +13,7 @@ public class Alerta {
     private Gravidade_Alerta nivelGravidade;
     private LocalDateTime dataHora;
     private boolean resolvido = false;
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
     //  GETTERS/SETTERS //
 
@@ -57,7 +59,7 @@ public class Alerta {
                 Gravidade: %s
                 Data de Emissão: %s
                 Situação: %s
-                """,getDescricao(),getTipo(),getNivelGravidade(), getDataHora(), isResolvido()? "Resolvido": "Pendente");
+                """,getDescricao(),getTipo(),getNivelGravidade(), getDataHora().format(dtf) , isResolvido()? "Resolvido": "Pendente");
     }
 
 }
