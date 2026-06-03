@@ -57,7 +57,7 @@ public class KoAlly {
     }
 
     public String analisarEstadoTripulacao() {
-        String relatorio = "=== ANÁLISE DO ESTADO DA TRIPULAÇÃO ===\n\n";
+        String relatorio = "=== ANÁLISE DO ESTADO DA TRIPULAÇÃO ===\n";
         int astronautasEmAtencao = 0;
 
         for (HistoricoSaude historico : historicos) {
@@ -93,7 +93,7 @@ public class KoAlly {
         return String.format("""
                 Missão: %s
                 Status: %s
-                Tripulante e seu estado de saúde: %s
+                Tripulante e seu estado de saúde: \n%s
                 """, getMissaoAtual().getNomeMissao(), getMissaoAtual().getStatus(), tripulacao);
     }
 
