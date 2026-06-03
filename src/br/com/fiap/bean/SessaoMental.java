@@ -1,6 +1,7 @@
 package br.com.fiap.bean;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class SessaoMental implements Analisavel{
     //Criando atributos
@@ -11,6 +12,7 @@ public class SessaoMental implements Analisavel{
     private String recomendacao;
     private Astronauta astronauta;
     private String EstadoMental;
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     //Criando construtores
     public SessaoMental(){}
@@ -116,8 +118,9 @@ public class SessaoMental implements Analisavel{
     }
 
     public String exibirResumoSessao(){
+
         return String.format("ID.Sessão: %d\nData da sessão: %s\nAstronauta: %s\nNível de humor: %d\nSentimento relatado:\n-%s",
-                getIdSessao(),getData(),getAstronauta().getNome(),getNivelHumor(),getSentimentoRelatado());
+                getIdSessao(),getData().format(dtf),getAstronauta().getNome(),getNivelHumor(),getSentimentoRelatado());
     }
 
     public String analisar(){
