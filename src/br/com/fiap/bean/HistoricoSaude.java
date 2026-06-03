@@ -70,7 +70,7 @@ public class HistoricoSaude implements Analisavel{
     }
 
     public String exibirRelatorioCompleto(int ultimas){
-        String relatorio = "==== RELATÓRIO COMPLETO DAS" + ultimas + " ÚLTIMAS SESSÕES ====\n";
+        String relatorio = "==== RELATÓRIO COMPLETO DAS " + ultimas + " ÚLTIMAS SESSÕES ====\n";
         int indice = totalSessoes - ultimas;
         if (indice < 0){
             indice = 0;
