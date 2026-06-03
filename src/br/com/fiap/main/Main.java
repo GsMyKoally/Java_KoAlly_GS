@@ -179,7 +179,7 @@ public class Main {
                                 hs = koally.getHistoricos().get(i);
                             }
                         }
-                        System.out.println("Qual das visualizações que ver" +
+                        System.out.println("Qual das visualizações quer ver" +
                                 "\n1.Relatório completo" +
                                 "\n2.Últimas N sessões" +
                                 "\nInsira: ");
