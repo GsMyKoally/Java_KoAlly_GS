@@ -52,8 +52,10 @@ public class KoAlly {
         return sess;
     }
 
-    public Alerta emitirAlerta(Tipo_Alerta tipo, String desc, Gravidade_Alerta grav){
-        return new Alerta(tipo,desc,grav);
+    public Alerta emitirAlerta(Tipo_Alerta tipo, String desc, Gravidade_Alerta grav) {
+        Alerta alerta = new Alerta(tipo, desc, grav);
+        alertasAtivos.add(alerta);
+        return alerta;
     }
 
     public String analisarEstadoTripulacao() {
