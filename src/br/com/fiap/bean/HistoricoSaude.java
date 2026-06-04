@@ -64,7 +64,7 @@ public class HistoricoSaude implements Analisavel{
     public String exibirRelatorioCompleto(){
         String relatorio = "==== RELATÓRIO COMPLETO DE SESSÕES ====\n";
         for (int i = 0; i < totalSessoes; i++){
-            relatorio += sessoes.get(i).exibirResumoSessao() + "\n";
+            relatorio += sessoes.get(i).exibirResumoSessao() + "\n----------------\n";
         }
         return relatorio;
     }
@@ -76,7 +76,7 @@ public class HistoricoSaude implements Analisavel{
             indice = 0;
         }
         for (int i = indice; i < totalSessoes; i++){
-            relatorio += sessoes.get(i).exibirResumoSessao() + "\n";
+            relatorio += sessoes.get(i).exibirResumoSessao() + "\n----------------\n";
         }
         return relatorio;
     }
