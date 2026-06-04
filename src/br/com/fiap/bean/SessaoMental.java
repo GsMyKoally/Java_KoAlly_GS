@@ -10,7 +10,7 @@ public class SessaoMental implements Analisavel{
     private String sentimentoRelatado;
     private String recomendacao;
     private Astronauta astronauta;
-    private String EstadoMental;
+    private String estadoMental;
     private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     //Criando construtores
@@ -21,7 +21,7 @@ public class SessaoMental implements Analisavel{
         this.sentimentoRelatado = sentimentoRelatado;
         this.recomendacao = recomendacao;
         this.astronauta = astronauta;
-        this.EstadoMental = estadoMental;
+        this.estadoMental = estadoMental;
     }
 
     //Criando getters e setters
@@ -59,11 +59,11 @@ public class SessaoMental implements Analisavel{
     public void setAstronauta(Astronauta astronauta) {
         this.astronauta = astronauta;
     }
-    public String getEstadoMental() {
-        return EstadoMental;
+    public String getestadoMental() {
+        return estadoMental;
     }
-    public void setEstadoMental(String estadoMental) {
-        EstadoMental = estadoMental;
+    public void setestadoMental(String estadoMental) {
+        this.estadoMental = estadoMental;
     }
 
     //Criando e importando metodos da classe
@@ -72,13 +72,13 @@ public class SessaoMental implements Analisavel{
         this.sentimentoRelatado = sentimento;
         try {
             if (nivelHumor >= 1 && nivelHumor <= 3) {
-                EstadoMental = "critico";
+                estadoMental = "critico";
             }
             else if(nivelHumor >= 4 && nivelHumor <=6){
-                EstadoMental = "atencao";
+                estadoMental = "atencao";
             }
             else if (nivelHumor >= 7 && nivelHumor <= 10){
-                EstadoMental = "estavel";
+                estadoMental = "estavel";
             }
             else {
                 throw new Exception("ERRO: Nível fora dos parâmetros! Coloque de 1-10.");
