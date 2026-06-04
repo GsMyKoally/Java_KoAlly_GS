@@ -1,6 +1,6 @@
 package br.com.fiap.bean;
 
-public class Pessoa {
+public abstract class Pessoa {
     //Atributos Pessoa
     private String nome;
     private int idade;
