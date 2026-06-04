@@ -11,7 +11,7 @@ public class SessaoMental implements Analisavel{
     private String recomendacao;
     private Astronauta astronauta;
     private String estadoMental;
-    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
 
     //Criando construtores
     public SessaoMental(){}
@@ -109,7 +109,7 @@ public class SessaoMental implements Analisavel{
     }
 
     public String exibirResumoSessao(){
-
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return String.format("Data da sessão: %s\nAstronauta: %s\nNível de humor: %d\nSentimento relatado:\n-%s", getData().format(dtf),getAstronauta().getNome(),getNivelHumor(),getSentimentoRelatado());
     }
 
