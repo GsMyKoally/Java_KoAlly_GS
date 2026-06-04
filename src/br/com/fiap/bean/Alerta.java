@@ -13,7 +13,7 @@ public class Alerta {
     private Gravidade_Alerta nivelGravidade;
     private LocalDateTime dataHora;
     private boolean resolvido = false;
-    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
 
     //  GETTERS/SETTERS //
 
@@ -52,6 +52,7 @@ public class Alerta {
         this.resolvido = status;
     }
     public String exibirAlerta(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         return String.format("""
                 Alerta!
                 %s
