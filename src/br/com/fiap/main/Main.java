@@ -186,7 +186,7 @@ public class Main {
                         sessoes = scan.nextInt();
                         if (sessoes == 1) {
                             if (hs != null) {
-                                System.out.println(hs.exibirRelatorioCompleto() + "\n");
+                                System.out.println(hs.exibirRelatorioCompleto());
                             } else {
                                 System.out.println("Histórico não encontrado");
                             }
