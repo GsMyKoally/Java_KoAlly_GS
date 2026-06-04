@@ -99,6 +99,12 @@ public class Main {
                         System.out.println("Agora, me diga qual sentimento está sentindo");
                         sentimento = scan.nextLine();
                         sm.avaliarHumor(nivelHumor, sentimento);
+
+                        if (sm.getestadoMental() == null) {
+                            System.out.println("Sessão cancelada por valor inválido.");
+                            break;
+                        }
+
                         System.out.println("=== RESUMO DA SESSÃO ===\n" + sm.exibirResumoSessao());
                         for (int i = 0; i < koally.getHistoricos().size(); i++){
                             if(koally.getHistoricos().get(i).getAstronauta() == missao.getTripulacao().get(escolhaAstronauta)){
