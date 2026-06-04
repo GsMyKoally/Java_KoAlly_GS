@@ -5,7 +5,6 @@ import java.time.format.DateTimeFormatter;
 
 public class SessaoMental implements Analisavel{
     //Criando atributos
-    private int idSessao;
     private LocalDateTime data = LocalDateTime.now();
     private int nivelHumor;
     private String sentimentoRelatado;
@@ -16,8 +15,7 @@ public class SessaoMental implements Analisavel{
 
     //Criando construtores
     public SessaoMental(){}
-    public SessaoMental(int idSessao, LocalDateTime data, int nivelHumor, String sentimentoRelatado, String recomendacao, Astronauta astronauta, String estadoMental) {
-        this.idSessao = idSessao;
+    public SessaoMental( LocalDateTime data, int nivelHumor, String sentimentoRelatado, String recomendacao, Astronauta astronauta, String estadoMental) {
         this.data = data;
         this.nivelHumor = nivelHumor;
         this.sentimentoRelatado = sentimentoRelatado;
@@ -27,13 +25,6 @@ public class SessaoMental implements Analisavel{
     }
 
     //Criando getters e setters
-    public int getIdSessao() {
-        return idSessao;
-    }
-    public void setIdSessao(int idSessao) {
-        this.idSessao = idSessao;
-    }
-
     public LocalDateTime getData() {
         return data;
     }
@@ -119,12 +110,11 @@ public class SessaoMental implements Analisavel{
 
     public String exibirResumoSessao(){
 
-        return String.format("ID.Sessão: %d\nData da sessão: %s\nAstronauta: %s\nNível de humor: %d\nSentimento relatado:\n-%s",
-                getIdSessao(),getData().format(dtf),getAstronauta().getNome(),getNivelHumor(),getSentimentoRelatado());
+        return String.format("Data da sessão: %s\nAstronauta: %s\nNível de humor: %d\nSentimento relatado:\n-%s", getData().format(dtf),getAstronauta().getNome(),getNivelHumor(),getSentimentoRelatado());
     }
 
     public String analisar(){
-        return "Estado emocional da sessão " + idSessao + ": " + recomendacao;
+        return "Estado emocional da sessão: " + recomendacao;
     }
 
     public String gerarRelatorio(){
