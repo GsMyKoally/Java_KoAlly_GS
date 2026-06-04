@@ -58,7 +58,7 @@ public class Main {
             destinoMissao = scan.nextLine();
             missao.setDestino(destinoMissao);
 
-            System.out.println("Duração prevista da missão: ");
+            System.out.println("Duração prevista da missão em dias: ");
             duracaoDias = scan.nextInt();
             missao.setDuracaoPrevistaDias(duracaoDias);
 
