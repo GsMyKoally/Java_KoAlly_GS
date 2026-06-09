@@ -62,17 +62,17 @@ public class KoAlly {
         String relatorio = "=== ANÁLISE DO ESTADO DA TRIPULAÇÃO ===\n";
         int astronautasEmAtencao = 0;
 
-        for (HistoricoSaude historico : historicos) {
-            double media = historico.calcularMediaHumor();
-            String nome = historico.getAstronauta().getNome();
+        for (int i = 0; i < historicos.size(); i++) {
+            double media = historicos.get(i).calcularMediaHumor();
+            String nome = historicos.get(i).getAstronauta().getNome();
 
             relatorio += "Astronauta: " + nome + "\n";
             relatorio += "Média de humor: " + String.format("%.2f", media) + "\n";
 
-            if (media < 5.0 && historico.getTotalSessoes() > 0) {
+            if (media < 5.0 && historicos.get(i).getTotalSessoes() > 0) {
                 relatorio += "Status: NECESSITA DE ACOMPANHAMENTO\n";
                 astronautasEmAtencao++;
-            } else if (historico.getTotalSessoes() == 0) {
+            } else if (historicos.get(i).getTotalSessoes() == 0) {
                 relatorio += "Status: Sem sessões registradas\n";
             } else {
                 relatorio += "Status: Estável\n";
